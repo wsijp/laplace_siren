@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd
-import os
-import datetime
 import argparse
 
 import tensorflow as tf
@@ -12,13 +10,8 @@ tfk = tf.keras
 tfkl = tf.keras.layers
 tfpl = tfp.layers
 
-import re, pickle
+import pickle
 
-import socket
-from pathlib import PurePath
-from googleapiclient import discovery
-import requests
-import google.auth
 
 from skimage.draw import (line, polygon, disk,
                           circle_perimeter,
@@ -400,15 +393,13 @@ def make_arg_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-e', '--epochs', help="Epochs in training.", type = int, default = None)
-    parser.add_argument('-N', '--project_namespace', help = "Big Query project and name space in project.namespace format. If no dot-separated path is passed, the argument will be interpreted as a namespace only, and the default project will be prefixed.", default = 'predictions')
-
-    parser.add_argument('--test', action='store_true', help="Run in test mode.", default = False)
 
 
     return parser
 
 if __name__ == "__main__":
 
+    # no args at the moment.
     parser = make_arg_parser()
     args = parser.parse_args()
     run( )

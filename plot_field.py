@@ -1,39 +1,18 @@
 #!/usr/bin/env python3
 import numpy as np
 import pandas as pd
-import os
-import datetime
+
 import argparse
-
-
-import re
-
-import socket
-from pathlib import PurePath
-from googleapiclient import discovery
-import requests
-import google.auth
 
 from skimage.draw import (line, polygon, disk,
                           circle_perimeter,
                           ellipse, ellipse_perimeter,
                           bezier_curve, polygon_perimeter, rectangle_perimeter)
 
-from tf_siren import SinusodialRepresentationDense, SIRENModel
-
 from PIL import Image, ImageDraw, ImageFont
 
 from matplotlib import pyplot as plt
 
-#from scipy.signal import savgol_filter
-
-PRECISION = 'float32'
-
-DATASET = 'predictions'
-STORAGE = 'bq'
-PROJECT = 'insight-186822'
-
-BATCH_SIZE = 32
 
 i_inputs_x = 0
 i_inputs_y = 1
@@ -248,7 +227,6 @@ def make_arg_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-e', '--epochs', help="Epochs in training.", type = int, default = None)
-    parser.add_argument('-N', '--project_namespace', help = "Big Query project and name space in project.namespace format. If no dot-separated path is passed, the argument will be interpreted as a namespace only, and the default project will be prefixed.", default = 'predictions')
 
     parser.add_argument('--test', action='store_true', help="Run in test mode.", default = False)
 
